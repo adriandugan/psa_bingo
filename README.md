@@ -49,10 +49,23 @@ Host a bingo night in a school without a working internet connection.
   * end of game
   * thank you
   * credits
+  * break time message (tea/coffee outside, resume in 15 minutes etc)
 
   ### Admin screen
   
   * config editor
+    * school name
+    * school logo
+    * colour scheme
+    * font choice
+    * font size
+    * ball messages
+    * intsructions
+    * credits/thanks
+    * welcome message
+    * winner announcement message
+    * next fundraising event announcement
+    * break time announcement
   * show initial screen
   * show welcome screen
   * show instructions
@@ -69,3 +82,4 @@ Host a bingo night in a school without a working internet connection.
   * in-game announcements: number of balls to go
     * 10 down, half way, 10 to go etc
     * anyone need 1 ball to win? 2? 3?
+  * show break time announcement
