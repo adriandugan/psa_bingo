@@ -2,6 +2,12 @@
 
 Host a bingo night in a school without a working internet connection.
 
+## Assumptions
+
+* bingo cards are pre-printed (sourced from elsewhere)
+* a projector is available which can be linked to a laptop
+* a local webserver can run on laptop
+
 ## Requirements / Feature Set
 
 * no internet connection
