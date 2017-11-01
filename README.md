@@ -10,6 +10,8 @@ Host a bingo night in a school without a working internet connection.
 
 ## Requirements / Feature Set
 
+* cache the numbers drawn in case of problems
+  * ability to resume game after power outage etc...
 * no internet connection
 * configurable:
   * number of balls
