@@ -17,6 +17,21 @@
             color: #333;
             line-height: 2;
         }
+        .button--new-game, .button--draw-ball {
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        .button--draw-ball {
+            background-color: orange;
+        }
+        .game-button--end-game, .game-button--resume-game, .game-button--really-end-game {
+            margin-top: 2em;
+        }
+        .game-button--really-end-game {
+            background-color: red;
+            color: white;
+            margin-left: 2em;
+        }
     </style>
 </head>
 
@@ -37,18 +52,19 @@
     <div v-if="this.current_ball" class="current_ball">current: {{ current_ball }}</div>
     <div v-if="this.previous_ball" class="previous_ball">previous: {{ previous_ball }}</div>
 
-    <button @click="newGame" v-if="this.balls.length === 0">Start a new game</button>
-    <button @click="resumeOrEnd" v-if="this.balls_drawn.length && !this.game_paused">End game</button>
-    <button v-if="this.game_paused" @click="resumeGame">Resume game</button>
-    <button v-if="this.game_paused" @click="endGame">Yes, end game</button>
+    <button class="button--new-game" @click="newGame" v-if="this.balls.length === 0">Start a new game</button>
 
-    <button @click="drawBall" v-if="this.balls.length && !this.game_paused">
+    <button class="button--draw-ball" @click="drawBall" v-if="this.balls.length && !this.game_paused">
         <span v-if="current_ball">Draw next ball</span>
         <span v-else>Draw first ball</span>
     </button>
 
     <div v-if="this.balls_drawn.length">Balls drawn in order: {{ balls_drawn }}</div>
     <div v-if="this.balls_drawn_sorted.length">Balls drawn (sorted): {{ balls_drawn_sorted }}</div>
+
+    <button class="game-button--end-game" @click="resumeOrEnd" v-if="this.balls_drawn.length && !this.game_paused">End game</button>
+    <button class="game-button--resume-game" v-if="this.game_paused" @click="resumeGame">Resume game</button>
+    <button class="game-button--really-end-game" v-if="this.game_paused" @click="endGame">Yes, end game</button>
 </div>
 
 
