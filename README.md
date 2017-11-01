@@ -10,7 +10,7 @@ Host a bingo night in a school without a working internet connection.
 
 # Screenshots
 
-[control panel:initial view](docs/images/initial_control_panel_view.png)
+![control panel:initial view](docs/images/initial_control_panel_view.png)
 
 # Planned Feature Set
 
