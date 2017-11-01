@@ -1,0 +1,125 @@
+<html>
+<head>
+    <title>Bingo! Control Panel</title>
+    <script src="js/vue.js"></script>
+    <style>
+        fieldset {
+            border: 0;
+        }
+        .current_ball {
+            font-weight: bold;
+            font-size: 200%;
+            line-height: 2;
+        }
+        .previous_ball {
+            font-weight: bold;
+            font-size: 130%;
+            color: #333;
+            line-height: 2;
+        }
+    </style>
+</head>
+
+<body>
+<div id="bingo_control_panel">
+    <h1>Bingo Control Panel</h1>
+    <fieldset v-if="this.balls.length === 0">
+        <label for="number_balls">Number of balls in play <select v-model="number_balls">
+            <option value="75">75</option>
+            <option value="80">80</option>
+        </select></label>
+    </fieldset>
+
+    <div v-if="number_balls_drawn">
+        ball #{{ number_balls_drawn }} of {{ number_balls }}</button>
+    </div>
+
+    <div v-if="this.current_ball" class="current_ball">current: {{ current_ball }}</div>
+    <div v-if="this.previous_ball" class="previous_ball">previous: {{ previous_ball }}</div>
+
+    <button @click="newGame" v-if="this.balls.length === 0">Start a new game</button>
+    <button @click="resumeOrEnd" v-if="this.balls_drawn.length && !this.game_paused">End game</button>
+    <button v-if="this.game_paused" @click="resumeGame">Resume game</button>
+    <button v-if="this.game_paused" @click="endGame">Yes, end game</button>
+
+    <button @click="drawBall" v-if="this.balls.length && !this.game_paused">
+        <span v-if="current_ball">Draw next ball</span>
+        <span v-else>Draw first ball</span>
+    </button>
+
+    <div v-if="this.balls_drawn.length">Balls drawn in order: {{ balls_drawn }}</div>
+    <div v-if="this.balls_drawn_sorted.length">Balls drawn (sorted): {{ balls_drawn_sorted }}</div>
+</div>
+
+
+<script>
+    // shuffle the balls into random order
+    function shuffle(array) {
+        var currentIndex = array.length,
+            temporaryValue, randomIndex, myRandomizedList;
+        myRandomizedList = array.slice(0);
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = myRandomizedList[currentIndex];
+            myRandomizedList[currentIndex] = myRandomizedList[randomIndex];
+            myRandomizedList[randomIndex] = temporaryValue;
+        }
+
+        return myRandomizedList;
+    }
+
+    new Vue({
+        el: '#bingo_control_panel',
+        data: {
+            number_balls: 80,
+            balls: [],
+            balls_drawn: [],
+            balls_drawn_sorted: [],
+            number_balls_drawn: 0,
+            current_ball: '',
+            previous_ball: '',
+            game_paused: false,
+            isActive: true
+        },
+
+        methods: {
+            newGame: function() {
+                for(ball=1; ball<=this.number_balls; ball++) {
+                    this.balls.push(ball);
+                }
+                this.balls = shuffle(this.balls);
+            },
+            drawBall: function() {
+                if (this.current_ball) {
+                    this.previous_ball = this.current_ball;
+                }
+                this.current_ball = this.balls.pop();
+                this.number_balls_drawn += 1;
+                if (this.current_ball) {
+                    this.balls_drawn.unshift(this.current_ball);
+                }
+            },
+            resumeOrEnd: function() {
+                this.game_paused = true;
+                this.balls_drawn_sorted = this.balls_drawn.slice(0);
+                this.balls_drawn_sorted.sort((a, b) => (a - b));
+            },
+            resumeGame: function() {
+                this.game_paused = false;
+                this.balls_drawn_sorted = [];
+            },
+            endGame: function() {
+                this.game_paused = false;
+                this.balls = [];
+                this.balls_drawn = [];
+                this.balls_drawn_sorted = [];
+                this.number_balls_drawn = 0;
+                this.current_ball = '';
+                alert('WINNER! WINNER! Chicken dinner! :-)');
+            }
+        }
+    });
+</script>
+</body>
+</html>
