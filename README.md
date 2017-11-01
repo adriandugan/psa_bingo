@@ -8,7 +8,11 @@ Host a bingo night in a school without a working internet connection.
 * a projector is available which can be linked to a laptop
 * a local webserver can run on laptop
 
-## Requirements / Feature Set
+# Screenshots
+
+[control panel:initial view](docs/images/initial_control_panel_view.png)
+
+# Planned Feature Set
 
 * cache the numbers drawn in case of problems
   * ability to resume game after power outage etc...
