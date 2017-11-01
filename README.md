@@ -10,7 +10,14 @@ Host a bingo night in a school without a working internet connection.
 
 # Screenshots
 
+## Control Panel - initial view
+
 ![control panel:initial view](docs/images/initial_control_panel_view.png)
+
+## Control Panel - mid game
+
+![control panel:mid game](docs/images/mid_game.png)
+
 
 # Planned Feature Set
 
