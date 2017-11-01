@@ -18,6 +18,13 @@ Host a bingo night in a school without a working internet connection.
 
 ![control panel:mid game](docs/images/mid_game.png)
 
+## Control Panel - end game - step 1 of 2
+
+![control panel:end_game_step_1_of_2](docs/images/end_game_step_1.png)
+
+You can choose to resume the game, or end it.
+
+You can check the bingo card against the numbers drawn (which have been sorted into ascending order for ease of checking).
 
 # Planned Feature Set
 
