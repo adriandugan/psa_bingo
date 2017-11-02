@@ -54,7 +54,12 @@
 
     <button class="button--new-game" @click="newGame" v-if="this.balls.length === 0">Start a new game</button>
 
-    <button class="button--draw-ball" @click="drawBall" v-if="this.balls.length && !this.game_paused">
+    <button
+        class="button--draw-ball"
+        @click="drawBall"
+        v-if="this.balls.length && !this.game_paused"
+        v-on:keyup="keyMonitorForSpacebar"
+    >
         <span v-if="current_ball">Draw next ball</span>
         <span v-else>Draw first ball</span>
     </button>
@@ -133,6 +138,11 @@
                 this.current_ball = '';
                 this.previous_ball = '';
                 alert('WINNER! WINNER! Chicken dinner! :-)');
+            },
+            keyMonitorForSpacebar: function(event) {
+                if (event.key !== " ") {
+                    event.stopPropagation();
+                }
             }
         }
     });
