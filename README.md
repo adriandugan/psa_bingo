@@ -97,6 +97,7 @@ You can check the bingo card against the numbers drawn (which have been sorted i
   * show instructions
   * new game
   * draw ball
+    * allow use of spacebar to draw next ball
   * show dialogue for ball - "key of the door, blind 30 etc"
   * show previous ball(s)
   * check winner card
