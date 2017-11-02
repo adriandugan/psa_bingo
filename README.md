@@ -8,6 +8,10 @@ Host a bingo night in a school without a working internet connection.
 * a projector is available which can be linked to a laptop
 * a local webserver can run on laptop
 
+# Control Panel - in Action!
+
+![control panel:in action](docs/images/control_panel_animated.gif)
+
 # Screenshots
 
 ## Control Panel - initial view
